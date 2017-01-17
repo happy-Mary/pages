@@ -96,11 +96,11 @@ header .header-content .buttons-main>div {
 
 
 
-@media (min-width: 1024px) {
+/*@media (min-width: 1024px) {
   header, section {
     height: 100vh;
   }
-}
+}*/
 
 @media (max-width: 1024px) {
   html {
