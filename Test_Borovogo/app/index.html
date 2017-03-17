@@ -3,12 +3,17 @@
 
 <head>
     <meta charset="utf-8">
+    <!-- saved from url=(0014)about:internet -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="imagetoolbar" content="no" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>G-Derm</title>
 
     <!-- Bootstrap -->
     <link href="libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!--slick slyder styles-->
+    <link rel="stylesheet" href="libs/slick/slick.css" />
+    <link rel="stylesheet" href="libs/slick/slick-theme.css" />
     <!-- styles -->
     <link rel="stylesheet" href="css-ready/bundle.min.css">
     <!-- Fonts -->
@@ -47,8 +52,10 @@
             </div>
         </div>
     </header>
+
+
     <!-- NAVIGATION -->
-    <nav class="navbar navbar-default" role="navigation">
+    <nav class="navbar navbar-default container-fluid" role="navigation">
         <div class="container">
             <!-- Название сайта и кнопка раскрытия меню для мобильных -->
             <div class="navbar-header">
@@ -65,7 +72,7 @@
             <!-- Само меню-->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav text-uppercase">
-                    <li><a href="#">О марке</a></li>
+                    <li class="active"><a href="#">О марке</a></li>
                     <li><a href="#">академия</a></li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">наша продукция</a>
@@ -79,8 +86,11 @@
                     <li><a href="#">сотрудничество</a></li>
                     <li><a href="#">контакты</a></li>
                 </ul>
-                <div class="search">
-                    <a href="#"><img src="img/search-icon.png" alt=""></a>
+                <div class="search text-right">
+                    <div>
+                        <input type="text" name="" value="">
+                        <img src="img/search-icon.png" alt="what do you want to find?" class="icon-search">
+                    </div>
                 </div>
             </div>
             <!-- /.navbar-collapse -->
@@ -90,13 +100,55 @@
 
     <!-- MAIN -->
     <div class="main container-fluid">
+
         <!-- SLIDER -->
-        <h1>Slider goes HERE</h1>
-        <div class="row slider"></div>
+        <section class="row slider">
+            <div class="sl-slide">
+                <img src="img/slider-img.jpg" alt="Slider Image" class="sl-img col-lg-12 img-responsive">
+                <div class="sl-text">
+                    <h1 class="sl-zag">Философия G-DERM</h1>
+                    <p class="sl-desc">Замедляя внутренние источники старения, мы помогаем женщинам выглядеть, чувствовать и жить молодо.</p>
+                    <button class="sl-butt btn">Подробнее</button>
+                </div>
+            </div>
+            <div class="sl-slide">
+                <img src="img/slider-img.jpg" alt="Slider Image" class="sl-img col-lg-12 img-responsive">
+                <div class="sl-text">
+                    <h1 class="sl-zag">Философия G-DERM</h1>
+                    <p class="sl-desc">Замедляя внутренние источники старения, мы помогаем женщинам выглядеть, чувствовать и жить молодо.</p>
+                    <button class="sl-butt btn">Подробнее</button>
+                </div>
+            </div>
+            <div class="sl-slide">
+                <img src="img/slider-img.jpg" alt="Slider Image" class="sl-img col-lg-12 img-responsive">
+                <div class="sl-text">
+                    <h1 class="sl-zag">Философия G-DERM</h1>
+                    <p class="sl-desc">Замедляя внутренние источники старения, мы помогаем женщинам выглядеть, чувствовать и жить молодо.</p>
+                    <button class="sl-butt btn">Подробнее</button>
+                </div>
+            </div>
+        </section>
         <!-- content -->
-        <div class="container">
-            <div class="row"></div>
-        </div>
+        <section class="content container">
+            <div class="row">
+                <div class="col-md-6 col-xs-12">
+                    <article class="main-content">
+                        <h2>Проффесиональная серия</h2>
+                        <p>Только для использования профессиональными косметологами после получения сертификата в нашем учебном-центре.</p>
+                        <p><a href="#">Перейти в каталог<span class="caret"></span></a></p>
+                        <img src="img/cosmet-1.png" alt="professional" class="img-responsive">
+                    </article>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <article class="main-content">
+                        <h2>Домашняя серия</h2>
+                        <p>Те же препараты, но в меньшей концентрации. Для использования дома в перерывах между салонными процедурами.</p>
+                        <p><a href="#">Перейти в каталог<span class="caret"></span></a></p>
+                        <img src="img/cosmet-2.png" alt="homely" class="img-responsive">
+                    </article>
+                </div>
+            </div>
+        </section>
     </div>
     <!-- FOOTER -->
     <footer>
@@ -105,6 +157,11 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="libs/bootstrap/js/bootstrap.min.js"></script>
+    <!--slick slider-->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="libs/slick/slick.min.js"></script>
+    <!--my script-->
+    <script src="js/script.js"></script>
 </body>
 
 </html>

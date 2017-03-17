@@ -1,0 +1,244 @@
+*,
+body {
+  -moz-user-select: -moz-none;
+  -o-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+input,
+textarea {
+  -moz-user-select: text;
+  -o-user-select: text;
+  -khtml-user-select: text;
+  -webkit-user-select: text;
+  user-select: text;
+}
+img {
+  -webkit-touch-callout: none;
+}
+html {
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  margin: 0;
+  padding: 0;
+}
+html body {
+  background: #fff;
+  font-size: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+html body a,
+html body a:hover,
+html body a:focus,
+html body a:active {
+  color: #000;
+  text-decoration: none;
+}
+html body h1 {
+  font-size: 320%;
+  font-weight: bold;
+}
+html body h2 {
+  font-size: 160%;
+  font-weight: bold;
+}
+header {
+  border-bottom: 1px solid #e8e8e8;
+}
+.header {
+  height: 6.5rem;
+}
+.header .logo {
+  height: 100%;
+  display: table;
+}
+.header .logo a {
+  display: table-cell;
+  height: 100%;
+  vertical-align: middle;
+}
+.header .logo p {
+  padding-top: 1.2rem;
+}
+.header .contacts {
+  padding-top: 0.9rem;
+}
+.header .contacts p:first-child {
+  display: inline-block;
+  padding-left: 20px;
+  background: url("../img/cab.png") no-repeat 0 center;
+}
+.header .contacts .num {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+.header .contacts .mail span {
+  border-bottom: 1px dotted #000;
+}
+.nav li:not(:last-child) {
+  background-image: url("../img/line.png");
+  background-repeat: no-repeat;
+  background-position: 100% center;
+}
+.nav li > a {
+  color: #000;
+}
+.nav li > a:focus,
+.nav li > a:active {
+  background: #72b13a;
+  color: #fff;
+  border: none;
+  outline: none;
+}
+.nav li > a:hover {
+  background: #e8e8e8 !important;
+  color: #000;
+}
+.navbar-default {
+  border: none;
+  background: #fff;
+  margin-bottom: 0;
+}
+.navbar-default .navbar-brand {
+  padding: 0;
+  display: none;
+}
+.navbar-default .navbar-nav li.active > a,
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:focus,
+.navbar-default .navbar-nav > a:hover {
+  color: #fff;
+  background: #72b13a !important;
+}
+.navbar-default .navbar-collapse {
+  padding-left: 0;
+  padding-right: 0;
+}
+.navbar-default .dropdown-menu {
+  padding: 0;
+  border-top: 2px solid #72b13a;
+}
+.navbar-default .dropdown-menu li {
+  height: 2.6rem;
+}
+.navbar-default .dropdown-menu li a {
+  text-transform: capitalize;
+}
+.show-input {
+  display: inline-block;
+}
+.navbar-collapse {
+  position: relative;
+}
+.navbar-collapse .search {
+  display: block;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  padding: 0;
+}
+.navbar-collapse .search img {
+  margin: 1rem 0;
+}
+.navbar-collapse .search input,
+.navbar-collapse .search input:focus {
+  display: none;
+  padding-right: 10px;
+  border: 2px solid #72b13a;
+  border-radius: 6px;
+  outline: none;
+}
+.navbar-collapse .search .icon-search {
+  cursor: pointer;
+}
+.content {
+  padding-bottom: 3rem;
+}
+.main-content {
+  margin-top: 3.8rem;
+  border: 1px solid #e8e8e8;
+  position: relative;
+}
+.main-content h2 {
+  line-height: 26px;
+  background-color: #fff;
+  display: inline-block;
+  margin: 0;
+  padding: 0 .8rem;
+  position: absolute;
+  top: -13px;
+  left: 20px;
+}
+.main-content p {
+  margin: 0 20px;
+  max-height: 53px;
+  max-width: 70%;
+}
+.main-content p:nth-of-type(1) {
+  margin-top: 1.86rem;
+  margin-bottom: 1.5rem;
+}
+.main-content p:nth-of-type(2) {
+  margin-bottom: 1.85rem;
+}
+.main-content p:nth-of-type(2) .caret {
+  margin-left: .4rem;
+}
+.main-content img {
+  position: absolute;
+  bottom: 0;
+  right: 20px;
+  height: 180%;
+  width: auto;
+}
+.main-content span {
+  transform: rotate(-90deg);
+}
+.sl-slide {
+  position: relative;
+}
+.sl-slide img {
+  padding: 0;
+}
+.sl-slide .sl-text {
+  width: 40%;
+  position: absolute;
+  left: 10%;
+  top: 30%;
+}
+.sl-slide .sl-text h1 {
+  margin: 0;
+}
+.sl-slide .sl-text .sl-desc {
+  width: 60%;
+  padding: 2rem 0;
+}
+.sl-slide button {
+  background: #354343;
+  color: #fff;
+  border-radius: 2px;
+  width: 9.3rem;
+  height: 2.6rem;
+}
+.sl-slide button:hover,
+.sl-slide button:focus {
+  background: #354343;
+  color: #fff;
+}
+.slider ul.slick-dots {
+  bottom: 20px;
+}
+.slider ul.slick-dots li button:before {
+  font-size: 16px;
+  color: #72b13a;
+}
+.slick-dotted.slick-slider {
+  margin-bottom: 0;
+}
+.container-fluid {
+  margin: 0;
+}

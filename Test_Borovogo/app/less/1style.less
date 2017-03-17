@@ -1,0 +1,273 @@
+@text-color: #000;
+@bg-color: #fff;
+@textFamily: 'Roboto', sans-serif;
+@pathImg: "../img";
+@grey: #e8e8e8;
+@darkgrey: #354343;
+@green: #72b13a;
+
+// запрет выдделения в моб.браузерах, кроме инпутов
+*, body
+{
+    -moz-user-select: -moz-none;
+    -o-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+input, textarea
+{
+    -moz-user-select: text;
+    -o-user-select: text;
+    -khtml-user-select: text;
+    -webkit-user-select: text;
+    user-select: text;
+}
+// убираем контекстное меню изображения
+img
+{
+    -webkit-touch-callout: none;
+}
+
+
+
+html {
+	font-family: @textFamily;
+	font-size: 15px;
+	margin: 0;
+	padding: 0;
+
+	body {
+		background: @bg-color;
+		font-size: 100%;
+		width: 100%;
+		margin: 0;
+		padding: 0;
+
+
+		a, a:hover, a:focus, a:active {
+			color: @text-color;
+			text-decoration: none;
+		}
+		h1 {font-size: 320%; font-weight: bold;}
+		h2 {font-size: 160%; font-weight: bold;}
+	}
+}
+
+header {
+	border-bottom: 1px solid @grey;
+}
+.header {
+	height: 6.5rem;
+	.logo{
+		height: 100%;
+		display: table;
+		a {
+			display: table-cell;
+			height: 100%;
+			vertical-align: middle;
+		}
+		p {
+			padding-top: 1.2rem;
+		}
+	}
+	.contacts {
+		padding-top: 0.9rem;
+	p:first-child {
+		display: inline-block;
+		padding-left: 20px;
+		background: url("@{pathImg}/cab.png") no-repeat 0 center;	
+	}
+	.num {
+          font-weight: bold;
+		  font-size: 1.2rem;
+		  margin-bottom: 5px;
+	}
+	.mail span {
+		border-bottom: 1px dotted @text-color;
+	}
+  }
+}
+
+
+.nav {
+	li:not(:last-child) {
+		background-image: url("@{pathImg}/line.png");
+		background-repeat: no-repeat;
+		background-position: 100% center;
+	}
+	li>a {color: @text-color;}
+	li>a:focus,
+	li>a:active {
+		background: @green;
+		color: @bg-color;
+		border: none;
+		outline: none;
+	}
+	li>a:hover {
+		background: @grey!important;
+		color: @text-color;
+	}
+}
+
+.navbar-default {
+	border: none;
+	background: @bg-color;
+	margin-bottom:0;
+		.navbar-brand {
+			padding: 0;
+			display: none;
+			}
+		.navbar-nav li.active>a,
+		.navbar-nav>.open>a, 
+		.navbar-nav>.open>a:focus,
+		.navbar-nav>a:hover {
+			color: @bg-color;
+			background: @green!important;
+	}
+		.navbar-collapse {
+			padding-left: 0;
+			padding-right: 0;
+		}
+
+		.dropdown-menu {
+			padding:0;
+			border-top: 2px solid @green;
+			li {
+				height: 2.6rem;
+			a {
+				text-transform: capitalize;
+		  }
+		}
+	}
+  }
+// class to show inputfield by clicking
+.show-input {
+	display: inline-block;
+}
+
+.navbar-collapse {
+	position: relative;
+	.search {
+		display: block;
+		height: 100%;
+		position: absolute;
+		right: 0;
+		padding: 0;
+		img {
+			margin: 1rem 0;
+		}
+		input, input:focus {
+			display: none;
+			padding-right: 10px;
+			border: 2px solid @green;
+			border-radius: 6px;
+			outline: none;
+	}
+	.icon-search {
+		cursor: pointer;
+	}
+  }
+}
+
+
+.content {
+	padding-bottom: 3rem;
+}
+
+.main-content {
+		margin-top: 3.8rem;
+		border: 1px solid @grey;
+		position: relative;
+
+		h2 {
+			line-height: 26px;
+			background-color: @bg-color;
+			display: inline-block;
+			margin: 0;
+			padding: 0 .8rem;
+			position: absolute;
+			top: -13px;
+			left: 20px;
+		}
+		p{
+			margin: 0 20px;
+			max-height: 53px;
+			max-width: 70%;
+		}
+		p:nth-of-type(1) {
+			margin-top: 1.86rem;
+			margin-bottom: 1.5rem;
+			// margin-right: 13.3rem;
+		}
+
+		p:nth-of-type(2) {
+		margin-bottom: 1.85rem;
+		.caret {margin-left: .4rem;}
+		}
+
+		img {
+			position: absolute;
+			bottom: 0;
+			right: 20px;
+			height: 180%;
+			width: auto;
+		}
+
+		span {
+			transform: rotate(-90deg);
+		}
+
+}
+
+.sl-slide {
+	position:relative;
+	img {
+		padding: 0;
+	 }
+	.sl-text {
+		width: 40%;
+		position: absolute;
+		left: 10%;
+		top: 30%;
+		h1 {margin: 0;}
+
+		 .sl-desc {
+			 width: 60%;
+			 padding: 2rem 0;
+		}
+	}
+
+	button
+		 {
+		background: @darkgrey;
+		color: @bg-color;
+		border-radius: 2px;
+		width: 9.3rem;
+		height: 2.6rem;
+		&:hover,
+		&:focus {
+			background: @darkgrey;
+			color: @bg-color;
+		}
+	}
+
+  }	
+
+.slider ul.slick-dots {
+		bottom: 20px;
+		li {
+			button:before{
+				font-size: 16px;
+				color: @green;
+			}
+			
+		}
+	}
+
+	.slick-dotted.slick-slider {
+    	margin-bottom: 0; 
+}
+
+.container-fluid {margin: 0;}
