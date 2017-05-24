@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+    <!-- saved from url=(0014)about:internet -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Myfin Test</title>
+    <!--seo-->
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="robots" content="index, follow">
+    <!--normalize-->
+    <link rel="stylesheet" href="libs/normalize.css">
+    <!-- custom styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<button class="openModal">Открыть модальное окно</button>
+	<div class="modalArea">
+		<div class="modalWindow">
+			<form action="post">
+				<fieldset>
+				<div class="grid">
+					<span class = "item-text">Комнат</span>
+					<div class="roomsItems">
+						<input type="checkbox" id="room1" name="room1" value="1" checked>
+						<label for="room1">1</label>
+						<input type="checkbox" id="room2" name="room2" value="2">
+						<label for="room2">2</label>
+						<input type="checkbox" id="room3" name="room3" value="3">
+						<label for="room3">3</label>
+						<input type="checkbox" id="room4" name="room4" value="4">
+						<label for="room4">4+</label>
+					</div>
+				</div>
+				<div class="grid">
+					<span class = "item-text">Цена</span>
+					<div class="cost">
+						<input type="text" placeholder="0" class="numField"><span class="symb dash">&ndash;</span>
+						<input type="text" placeholder="100" class="numField"><span class="symb">$</span>
+					</div>
+				</div>
+				<div class="grid">
+					<select required>
+				        <option value="" disabled selected hidden>Направление</option>
+				        <option value="0">Север</option>
+				        <option value="1">Юг</option>
+				        <option value="1">Запад</option>
+				        <option value="1">Восток</option>
+				    </select>
+				</div>
+				   
+				</fieldset>
+				<fieldset>
+					<p>Расширенный поиск</p>
+					<div class="grid">
+						<div class="street">
+							<input type="text" placeholder="Улица">
+						</div>
+					</div>
+					<div class="grid">
+						<p>Удаленность от МКАД, км</p>
+						<div class="distance">
+							<input type="text" placeholder="0" class="numField"><span class="symb dash">&ndash;</span>
+							<input type="text" placeholder="100" class="numField">
+							<input type="range" value="15" min="0" max="50">
+						</div>
+					</div>
+					<div class="grid">
+						<p>Площадь,м<sup>2</sup></p>
+						<div class="area">
+							<input type="text" placeholder="0" class="numField"><span class="symb dash">&ndash;</span>
+							<input type="text" placeholder="100" class="numField">
+							<input type="range" value="15" min="0" max="50">
+						</div>
+					</div>
+				</fieldset>
+				<fieldset>
+					<div class="grid">
+						<p>Предложения от</p>
+						<input type="radio" name="offer" value="owner" id="owner" checked><label for="owner">собственника</label>
+						<input type="radio" name="offer" value="agency" id="agency"><label for="agency">агентства</label>
+					</div>
+					<div class="grid">
+						<p>Предложения</p>
+						<input type="checkbox" name="photo" id="photo" checked><label for="photo">с фото</label>
+					</div>
+				</fieldset>
+				<button>Найти</button>
+			</form>
+		</div>
+	</div>
+	<script src="script.js"></script>
+</body>
+</html>

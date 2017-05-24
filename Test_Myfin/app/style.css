@@ -1,0 +1,177 @@
+*, html {
+	font-size: 16px;
+	margin: 0;
+}
+
+body {font-size: 100%;}
+
+
+button,
+button:focus,
+button:active {
+	background-color: transparent;
+	box-sizing: border-box;
+	outline: none;
+	border: none;
+	cursor: pointer;
+}
+
+input[type="text"], select, option {
+	height: 30px;
+	box-sizing: border-box;
+	border: 1px solid #c8c7c7;
+	border-radius: 1px;
+	padding: 0;
+	margin: 0;
+	padding-left: 15px;
+	color: black;
+	outline: none;
+	vertical-align: top;
+	background-color: transparent;
+}
+
+/*grid style*/
+fieldset .grid {
+	width: 250px;
+	display: inline-block; 
+	vertical-align: top;
+}
+
+fieldset .grid:not(:nth-of-type(1)) {margin-left: 10px;}
+fieldset .grid:not(:last-child) {margin-right: 10px;}
+
+button.openModal {
+	display: block;
+	margin: 0 auto;
+	margin-top: 39px;
+	width: 192px;
+	height: 30px;
+	border: 1px solid #418ccf;
+	border-radius: 1px;
+	font-size: 0.75rem;
+	color: #418ccf;
+}
+
+.modalArea {
+	display: block;
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+	background-color: rgba(0, 0, 0, .5);
+}
+
+.modalWindow {
+	position: relative;
+	box-sizing: border-box;
+	background-color: #fff;
+	width: 88%;
+	margin: 0 auto;
+	margin-top: 11%;
+	padding: 0 69px;
+	border: 1px solid #ebebeb;
+}
+
+.modalWindow fieldset {
+	box-sizing: content-box;
+	border: none;
+	border-bottom: 1px solid #e8e8e8;
+	margin: 0;
+	padding: 20px 0;
+	overflow: hidden;
+}
+
+.modalWindow fieldset:nth-of-type(1) span,
+.modalWindow fieldset:nth-of-type(1) label {
+	line-height: 30px;
+	overflow: hidden;
+}
+
+.modalWindow .roomsItems { width: 75%;}
+.modalWindow .cost {width: 80%; float: right;}
+
+.modalWindow .roomsItems,
+.modalWindow .cost { display: inline-block;}
+
+.modalWindow fieldset:nth-of-type(1) .grid:nth-of-type(1) .item-text {display: inline-block; width: 23%;}
+.modalWindow fieldset:nth-of-type(1) .grid:nth-of-type(2) .item-text {display: inline-block; width: 15%;}
+.modalWindow fieldset:nth-of-type(1) label {cursor: pointer;}
+
+.modalWindow .roomsItems input {display: none;}
+
+.modalWindow .roomsItems label {
+	box-sizing: border-box;
+	display: inline-block;
+	text-align: center;
+	width: 25%;
+	height: 30px;
+	border: 1px solid #418ccf;
+	float: left;
+}
+
+.modalWindow .roomsItems label:not(:nth-of-type(1)) {border-left: none;}
+
+.modalWindow .roomsItems input:checked + label {background-color: #418ccf; color: #fff;}
+
+.modalWindow .cost input[type="text"],
+.modalWindow .distance input[type="text"],
+.modalWindow .area input[type="text"],
+.modalWindow .symb {
+	float: left;
+	line-height: 30px;
+	box-sizing: border-box; 
+}
+
+.modalWindow .cost input[type="text"] {width: 42%;}
+
+.modalWindow .symb {
+ font-weight: 900;
+ width: 8%;
+ text-align: center;
+}
+
+.modalWindow .dash {color: #c8c7c7;}
+
+.modalWindow select {
+	height: 30px;
+	width: 100%;
+	appearance:none;
+    -moz-appearance:none; 
+    -webkit-appearance:none; 
+    background: url("images/arrow.png") no-repeat 222px center;
+}
+
+fieldset:nth-of-type(2)>div {display: inline-block;}
+
+.street input {
+	width: 100%;
+	margin-top: 24px;
+}
+
+.distance input[type="text"],
+.area input[type="text"] {width: 46%;}
+
+input[type="range"] {width: 100%;}
+
+.distance {
+	overflow: hidden;
+}
+
+fieldset:nth-of-type(2) .grid p {
+	line-height: 1;
+	font-size: 14px;
+	margin-bottom: 10px;
+}
+
+fieldset:nth-of-type(2)>p {margin-bottom: 15px; font-size: 1rem;}
+
+
+
+
+
+
+
+
+
