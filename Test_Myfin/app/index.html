@@ -12,8 +12,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="robots" content="index, follow">
+    <!-- font -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600&amp;subset=cyrillic-ext" rel="stylesheet">
     <!--normalize-->
     <link rel="stylesheet" href="libs/normalize.css">
+    <!-- ui-slider styles-->
+    <link rel="stylesheet" href="libs/jquery-ui/jquery-ui.min.css">
     <!-- custom styles -->
     <link rel="stylesheet" href="style.css">
 </head>
@@ -21,7 +25,8 @@
 	<button class="openModal">Открыть модальное окно</button>
 	<div class="modalArea">
 		<div class="modalWindow">
-			<form action="post">
+		<div class="closeModal"></div>
+			<form>
 				<fieldset>
 				<div class="grid">
 					<span class = "item-text">Комнат</span>
@@ -46,10 +51,11 @@
 				<div class="grid">
 					<select required>
 				        <option value="" disabled selected hidden>Направление</option>
-				        <option value="0">Север</option>
-				        <option value="1">Юг</option>
-				        <option value="1">Запад</option>
-				        <option value="1">Восток</option>
+				        <option value="0">Любое</option>
+				        <option value="1">Север</option>
+				        <option value="2">Юг</option>
+				        <option value="3">Запад</option>
+				        <option value="4">Восток</option>
 				    </select>
 				</div>
 				   
@@ -64,21 +70,21 @@
 					<div class="grid">
 						<p>Удаленность от МКАД, км</p>
 						<div class="distance">
-							<input type="text" placeholder="0" class="numField"><span class="symb dash">&ndash;</span>
-							<input type="text" placeholder="100" class="numField">
-							<input type="range" value="15" min="0" max="50">
+							<input type="text" placeholder="0" class="numField" id="dist-num1"><span class="symb dash">&ndash;</span>
+							<input type="text" placeholder="100" class="numField" id="dist-num2">
 						</div>
+						<div id="slider-range-1"></div>
 					</div>
 					<div class="grid">
 						<p>Площадь,м<sup>2</sup></p>
 						<div class="area">
-							<input type="text" placeholder="0" class="numField"><span class="symb dash">&ndash;</span>
-							<input type="text" placeholder="100" class="numField">
-							<input type="range" value="15" min="0" max="50">
+							<input type="text" placeholder="0" class="numField" id="area-num1"><span class="symb dash">&ndash;</span>
+							<input type="text" placeholder="100" class="numField" id="area-num2">
 						</div>
+						<div id="slider-range-2"></div>
 					</div>
 				</fieldset>
-				<fieldset>
+				<fieldset class="offers">
 					<div class="grid">
 						<p>Предложения от</p>
 						<input type="radio" name="offer" value="owner" id="owner" checked><label for="owner">собственника</label>
@@ -93,6 +99,10 @@
 			</form>
 		</div>
 	</div>
+	<!-- jquery UI for range slider -->
+	<script src="libs/jquery-ui/external/jquery/jquery.js"></script>
+  	<script src="libs/jquery-ui/jquery-ui.min.js"></script>
+  	<!-- custom scripts -->
 	<script src="script.js"></script>
 </body>
 </html>
