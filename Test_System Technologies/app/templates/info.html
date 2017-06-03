@@ -1,0 +1,11 @@
+<aside>
+	<h3>Choose resource</h3>
+	<label ng-repeat="source in newsRes"><input type="radio" name="source" value="{{source.name}}">{{source.name}}</label>
+</aside>
+<div class="container">
+	<section ng-repeat="category in categories">
+		<h2>{{category}}</h2>
+		<div ng-repeat="source in newsRes" ng-if="source.category == category">{{source.name}}</div>
+	</section>
+	<p ng-repeat="art in vm.artArr">art.author</p>
+</div>

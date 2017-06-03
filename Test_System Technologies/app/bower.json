@@ -1,0 +1,26 @@
+{
+  "name": "news app",
+  "homepage": "https://github.com/happy-Mary/pages",
+  "authors": [
+    "happy-Mary <mariashklovska1991@gmail.com>"
+  ],
+  "description": "",
+  "main": "bower-components",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "html5shiv": "^3.7.3",
+    "angular-ui-router": "^1.0.3",
+    "angular": "^1.6.4"
+  },
+  "dependencies": {
+    "normalize-css": "^7.0.0"
+  }
+}
