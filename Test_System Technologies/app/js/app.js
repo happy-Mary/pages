@@ -3,8 +3,9 @@
 var newsApp = angular.module("newsApp", ["ui.router"]);
 
 newsApp.controller("MainCtrl", mainController);
-
 newsApp.controller("AppCtrl", appController);
+newsApp.controller("NewsCtrl", newsController);
+
 
 function mainController($scope, $location) {
     $scope.isActive = function(route) {
@@ -12,14 +13,12 @@ function mainController($scope, $location) {
     }
 };
 
-function appController($scope, newsResources, objectFactory, $http) {
-    $scope.newsRes = newsResources.data.sources; 
-    $scope.newsRes = newsResources.data.sources; 
-    console.log($scope.newsRes);
-     // console.log($scope.newArt);
+function appController($scope, newsResources, objectFactory, $http, productService) {
+    // $scope.newsRes = newsResources.data.sources; 
+    $scope.newsRes = newsResources.sources; 
+    // productService.addProduct($scope.newsRes);
 
     $scope.categories = [];
-    
     $scope.makeCatArr = function(){
         for (var i = $scope.newsRes.length - 1; i >= 0; i--) {
             var catItem = String($scope.newsRes[i].category);
@@ -33,20 +32,12 @@ function appController($scope, newsResources, objectFactory, $http) {
             }
             // console.log($scope.categories);
       };
-
     $scope.makeCatArr();
+}
 
-
-    // var newsapi_org_apiKey = ["1bef2b9f1a834a4ba7c821a4f7037c6a"];
-    // var sourceId = $scope.newsRes[0].id;
-    // var url_art = 'https://newsapi.org/v1/articles?source=the-next-web&sortBy=latest&apiKey=1bef2b9f1a834a4ba7c821a4f7037c6a';
-    // vm.artArr = null;
-    // objectFactory.getObject(url_art).then(function(data){
-    //     $scope.artArr = data.data.articles;
-    //     console.log($scope.artArr);
-    // });
-    
-
+function newsController($scope, newsArticles){
+    console.log(newsArticles);
+    // исправить получение объекта
 }
 
 
@@ -63,13 +54,20 @@ newsApp.config(function($stateProvider, $urlRouterProvider, $urlMatcherFactoryPr
             template: '<div ui-view></div>',
             controller: "AppCtrl",
             resolve: {
-            newsResources: function(objectFactory){return objectFactory.getObject('https://newsapi.org/v1/sources?language=en');}
+            newsResources: function(objectFactory){
+                return objectFactory.getObject('https://newsapi.org/v1/sources?language=en');
+            },
             }
         })
         .state("app.main", {
             url: "/main",
-            templateUrl: "templates/info.html"
-            
+            templateUrl: "templates/info.html",
+            controller: "NewsCtrl",
+            resolve: {
+            newsArticles: function(productService, objectFactory, newsResources){
+               return productService.addResourceforArt(newsResources.sources);
+                }
+            }
         })
         .state("app.saved", {
             url: "/saved",
@@ -89,7 +87,27 @@ newsApp.config(function($stateProvider, $urlRouterProvider, $urlMatcherFactoryPr
         });
 });
 
-// GETTING DATA FROM SERVER
+
+
+// SERVISE for getting all articles
+newsApp.service('productService', function(objectFactory) {
+  var sourceList = null;
+
+  var addResourceforArt = function(newObj) {
+      sourceList = newObj;
+      console.log("sourceList updated");
+      console.log(sourceList.length);
+      return objectFactory.getArticle(sourceList);
+  };
+
+  return {
+    addResourceforArt: addResourceforArt
+  };
+
+});
+
+
+// GETTING SOURCES
 newsApp.factory("objectFactory", ['$http', function($http){  
 
     var obj = {
@@ -99,12 +117,30 @@ newsApp.factory("objectFactory", ['$http', function($http){
                 method: 'GET',
                 url: dataUrl
                 }).then(function(data, status, headers, config) {
-                   // return makeArrO(data);
-                    return data;
+                    return data.data;
             });
             return promise1;
-        }
-    };
+        },
+        getArticle: function(dataRes){
+            var dataRes =  dataRes;
+            var articlesArr = [];
 
+            for(var i = 0; i<=dataRes.length-1; i++){
+                var sourceId = dataRes[i].id;
+                
+                var sort = dataRes[i].sortBysAvailable[0];
+                var api_KEY = '3ce5eede372b41dca1278128350bf064';
+                var dataUrl = 'https://newsapi.org/v1/articles?source='+sourceId+'&sortBy='+sort+'&apiKey='+api_KEY;   
+
+                $http.get(dataUrl).then(function(response){articlesArr.push(response.data); return articlesArr;});
+            } //FOR finish
+             return articlesArr;
+        }
+
+    };
+   
     return obj;
 }]);
+
+
+
