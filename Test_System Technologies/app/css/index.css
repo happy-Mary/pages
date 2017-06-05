@@ -108,7 +108,8 @@ aside label {
 .article img {min-height: 100px;  width: 20%;}
 
 .articlepage {text-align: justify; padding: 4%;}
-.articlepage img {width: 50%; display: block; margin: 0 auto; padding-top: 50px; padding-bottom: 50px;}
+.articlepage h2, .articlepage p {padding: 1rem 0; }
+.articlepage img {width: 50%; display: block; margin: 0 auto;}
 .articlepage a {text-decoration: underline; color: blue;}
 
 .saved-art li {
@@ -127,3 +128,11 @@ aside label {
 	text-decoration: underline;
 	color: blue;
 }
+
+.myNews {width: 80%; margin: 0 auto;}
+
+.myNews input,
+.myNews button,
+.myNews textarea {display: block; width: 100%; padding: .3rem; margin: .5rem; margin-left: 0;}
+
+.myNews h2, .myNews button {margin-top: 1rem; margin-bottom: 1rem;}

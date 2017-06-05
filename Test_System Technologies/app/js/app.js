@@ -63,6 +63,15 @@ function appController($scope, newsResources, $state, localStorageService) {
     }, true);
 
     $scope.storageSave = localStorageService.save;
+
+    // adding custom news
+    $scope.newsCustomData = {};
+    $scope.addNews = function() {
+        console.log($scope.newsCustomData);
+        var customData = $scope.newsCustomData;
+        $scope.storageSave('customData', customData);
+        $scope.newsCustomData = {};
+    };
 }
 
 // change getting articles
@@ -72,6 +81,11 @@ function newsController($scope, $state, newsResources){
 
 function savedController($scope, $state, localStorageService, savedArticles){
    $scope.savedForLater = savedArticles;
+   
+    $scope.deleteSavedForLater = function(obj, data){
+        localStorageService.delete(obj, data);
+        $scope.savedForLater = localStorageService.get(obj);
+    }
 }
 
 
@@ -115,7 +129,9 @@ newsApp.config(function($stateProvider, $urlRouterProvider, $urlMatcherFactoryPr
         })
         .state("app.added",{
         	url: "/mynews",
-        	templateUrl: "templates/added-news.html"
+        	templateUrl: "templates/added-news.html",
+            controller: "SavedCtrl",
+            resolve: {savedArticles: function(localStorageService){return localStorageService.get('customData');}}
         })
         .state("app.news-info", {
         	// url: "/article/{id:[/d]{1,20}}",
@@ -201,14 +217,20 @@ newsApp.factory('localStorageService', function(){
             if(!localObj){
                 localObj = [];
             }
-            console.log(localObj);
-            // return localObj;
             localObj.push(data);
             localStorage.setItem(key, angular.toJson(localObj));
         },
         get: function(key){
             var localObj = angular.fromJson(localStorage.getItem(key));
             return localObj;
+        },
+        delete: function(key, titleData){
+            var localObj = angular.fromJson(localStorage.getItem(key));
+            var obj = localObj.find(function(obj){return obj.title === titleData});
+            var objIndex = localObj.indexOf(obj);
+            localObj.splice(objIndex, 1);
+            console.log(localObj);
+           localStorage.setItem(key, angular.toJson(localObj));
         }
     }
 });

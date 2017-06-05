@@ -1,6 +1,9 @@
 <div class="saved-art">
 	<h2>Articles to read later</h2>
 	<ul>
-		<li ng-repeat="art in savedForLater"><button>delete</button><a  ng-click="readMore(art)">{{art.title}}</a></li>
+		<li ng-repeat="art in savedForLater">
+			<button ng-click="deleteSavedForLater('savedArt', art.title)">delete</button>
+			<a  ng-click="readMore(art)">{{art.title}}</a>
+		</li>
 	</ul>
 </div>
