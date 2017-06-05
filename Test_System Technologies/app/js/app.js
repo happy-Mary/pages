@@ -1,20 +1,38 @@
 "use strict"
 
-var newsApp = angular.module("newsApp", ["ui.router"]);
+var newsApp = angular.module("newsApp", ["ui.router", 'ui.router.state.events']);
+
 
 newsApp.controller("MainCtrl", mainController);
 newsApp.controller("AppCtrl", appController);
 newsApp.controller("NewsCtrl", newsController);
 newsApp.controller("SavedCtrl", savedController);
 
-
-function mainController($scope, $location) {
+// CONTROLLERS
+function mainController($scope, $location, $rootScope) {
     $scope.isActive = function(route) {
         return route === $location.path();
     }
+    // Showing preloader on state events
+        $rootScope.$on('$stateChangeStart',function(event, toState, toParams, fromState, fromParams){
+          $scope.preloader = true;
+        });
+
+        $rootScope.$on('$stateChangeError',function(event, toState, toParams, fromState, fromParams){
+          console.log(arguments);
+        });
+
+        $rootScope.$on('$stateChangeSuccess',function(event, toState, toParams, fromState, fromParams){
+           $scope.preloader = false;
+        });
+
+        $rootScope.$on('$stateNotFound',function(event, unfoundState, fromState, fromParams){
+          console.log(unfoundState, fromState, fromParams);
+        });
+
 };
 
-function appController($scope, newsResources, $state, localStorageService) {
+function appController($rootScope, $scope, newsResources, $state, localStorageService) {
     $scope.newsRes = newsResources.sources; 
 
     $scope.resourceContent = 'all';
@@ -31,7 +49,6 @@ function appController($scope, newsResources, $state, localStorageService) {
 
     $scope.showResource = function(name, category){
         $scope.resourceContent = name;
-        console.log($scope.resourceContent);
         $scope.categotyContent = category;
         $scope.limitToShow = 5;
     }
@@ -50,17 +67,11 @@ function appController($scope, newsResources, $state, localStorageService) {
       };
     $scope.makeCatArr();
 
-    $scope.currentArticle = {title: "Choose an article"};
+    $scope.currentArticle = {title: "Choose an article on ALL NEWS page"};
     $scope.readMore = function(string){
         $scope.currentArticle = string;
-       
         $state.go("app.news-info");
-         console.log($scope.currentArticle);
     }
-
-    $scope.$watch('currentArticle', function(newVal, oldVal){
-        console.log('changed');
-    }, true);
 
     $scope.storageSave = localStorageService.save;
 
@@ -74,9 +85,8 @@ function appController($scope, newsResources, $state, localStorageService) {
     };
 }
 
-// change getting articles
-function newsController($scope, $state, newsResources){
-    $scope.allArticles = newsResources;
+function newsController($scope, $state, newsArticles){
+    $scope.allArticles = newsArticles;
 }
 
 function savedController($scope, $state, localStorageService, savedArticles){
@@ -88,8 +98,7 @@ function savedController($scope, $state, localStorageService, savedArticles){
     }
 }
 
-
-// Ui-router
+// UI-ROUTER
 newsApp.config(function($stateProvider, $urlRouterProvider, $urlMatcherFactoryProvider, $locationProvider) {
     $urlMatcherFactoryProvider.caseInsensitive(true);
     $locationProvider.hashPrefix('');
@@ -104,7 +113,7 @@ newsApp.config(function($stateProvider, $urlRouterProvider, $urlMatcherFactoryPr
             resolve: {
             newsResources: function(objectFactory){
                 return objectFactory.getObject('https://newsapi.org/v1/sources?language=en');
-            },
+             },
             }
         })
         .state("app.main", {
@@ -112,9 +121,9 @@ newsApp.config(function($stateProvider, $urlRouterProvider, $urlMatcherFactoryPr
             templateUrl: "templates/info.html",
             controller: "NewsCtrl",
             resolve: {
-            newsResources: function(dataService){
+            newsArticles: function(dataService){
                return dataService.getData();
-            },
+             },
             }
         })
         .state("app.saved", {
@@ -134,13 +143,14 @@ newsApp.config(function($stateProvider, $urlRouterProvider, $urlMatcherFactoryPr
             resolve: {savedArticles: function(localStorageService){return localStorageService.get('customData');}}
         })
         .state("app.news-info", {
-        	// url: "/article/{id:[/d]{1,20}}",
+        	// url: "/article/{id:[/d]{1,10}}",
             url: "/article",
         	templateUrl: "templates/news-info.html"
         });
 });
 
-// GETTING SOURCES
+// SERVICES
+// get resources Service
 newsApp.factory("objectFactory", function($http, dataService){  
     var obj = {
         getObject: function(dataUrl){
@@ -160,13 +170,11 @@ newsApp.factory("objectFactory", function($http, dataService){
     return obj;
 });
 
-
-// Getting Articles
+// Getting All Articles by http
 newsApp.factory('myService', function ($http, $q){
   return {
     getItems: function (resArr){
         var resArr = resArr.sources;
-        // console.log(resArr);
         var promises= [];
         for (var i = 0; i <= resArr.length-1; i++) {
 
@@ -191,11 +199,9 @@ newsApp.factory('myService', function ($http, $q){
   };
 });
 
-
-// SERVISE for getting all articles
+// SERVISE set resources for getting articles and returning articles object
 newsApp.factory('dataService', function (myService) {
     var formData = {};
-
     return {
         getData: function () {
              return myService.getItems(formData);
@@ -229,8 +235,7 @@ newsApp.factory('localStorageService', function(){
             var obj = localObj.find(function(obj){return obj.title === titleData});
             var objIndex = localObj.indexOf(obj);
             localObj.splice(objIndex, 1);
-            console.log(localObj);
-           localStorage.setItem(key, angular.toJson(localObj));
+            localStorage.setItem(key, angular.toJson(localObj));
         }
     }
 });

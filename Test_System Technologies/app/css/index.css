@@ -67,8 +67,6 @@ header h1, aside h3, .articlepage h2 {
 aside {width: 25%; background-color: lightgray; padding: 10px 0;  float: left;}
 .container {width: 75%; float: left;}
 
- /*background-color: lightblue;*/
-
 aside label>input {margin: 0 10px;}
 
 aside label {
@@ -136,3 +134,11 @@ aside label {
 .myNews textarea {display: block; width: 100%; padding: .3rem; margin: .5rem; margin-left: 0;}
 
 .myNews h2, .myNews button {margin-top: 1rem; margin-bottom: 1rem;}
+
+.preloader img {
+	display: block;
+	margin: 0 auto;
+	margin-top: 10%;
+	width: 10%;
+
+}
