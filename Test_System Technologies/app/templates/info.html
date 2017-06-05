@@ -13,11 +13,12 @@
 					<img src="{{art.urlToImage}}" alt="Do you have a photo?">
 					<p>{{art.title}}</p><br/>
 					<p><a ng-click="readMore(art)">Read more...</a></p>
-					<p><a href="">Save for later</a></p>
+					<p><a href="" ng-click="storageSave('savedArt', art)">Save for later</a></p>
 				</div>
 			</div>
 		</div>
-		
+		<a href="" ng-click="incrementLimit()">SHOW MORE</a>
+		<a href="" ng-click="decrementLimit()">SHOW LESS</a>
 	</section>
 	
 </div>

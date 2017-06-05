@@ -17,6 +17,19 @@ a, a:active, a:visited, a:hover {
 	cursor: pointer;
 }
 
+button,
+button:active, button:hover {
+	outline: none;
+	background-color: rgb(224, 224, 224);
+	border: 2px solid rgb(0, 102, 204);
+	border-radius: 3px;
+	padding: .3rem;
+	text-transform: uppercase;
+	color: rgb(64, 64, 64);
+	font-weight: bold;
+	cursor: pointer;
+}
+
 header h1, aside h3, .articlepage h2 {
 	text-align: center;
 }
@@ -71,6 +84,15 @@ aside label {
 	text-align: center;
 	color: #fff;
 }
+.container section {
+	padding-top: .3rem;
+	padding-bottom: .3rem;
+}
+
+.container section>a {
+	color: blue;
+	text-decoration: underline;
+}
 
 .article {
 	font-weight: bold;
@@ -79,12 +101,29 @@ aside label {
 
 .article img, .article p {float: left;}
 
-.article p {padding: 10px; width: 70%;}
+.article p {padding: 10px; padding-top: 0; width: 70%;}
 
-.article a {text-decoration: underline;}
+.article a {text-decoration: underline; color: rgb(96, 96, 96);}
 
 .article img {min-height: 100px;  width: 20%;}
 
 .articlepage {text-align: justify; padding: 4%;}
 .articlepage img {width: 50%; display: block; margin: 0 auto; padding-top: 50px; padding-bottom: 50px;}
 .articlepage a {text-decoration: underline; color: blue;}
+
+.saved-art li {
+	list-style-position: inside;
+	list-style-type: decimal;
+}
+.saved-art li, .saved-art h2 {
+	margin: .7rem;
+}
+
+.saved-art li>a{
+	margin-left: .4rem;
+}
+
+.saved-art li>a:hover {
+	text-decoration: underline;
+	color: blue;
+}

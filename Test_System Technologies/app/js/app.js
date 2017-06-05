@@ -5,6 +5,7 @@ var newsApp = angular.module("newsApp", ["ui.router"]);
 newsApp.controller("MainCtrl", mainController);
 newsApp.controller("AppCtrl", appController);
 newsApp.controller("NewsCtrl", newsController);
+newsApp.controller("SavedCtrl", savedController);
 
 
 function mainController($scope, $location) {
@@ -13,21 +14,27 @@ function mainController($scope, $location) {
     }
 };
 
-function appController($scope, newsResources, $state) {
+function appController($scope, newsResources, $state, localStorageService) {
     $scope.newsRes = newsResources.sources; 
-    console.log($scope.newsRes);
 
     $scope.resourceContent = 'all';
     $scope.categotyContent = 'all';
-    $scope.limitToShow = 1;
+     var limitStep = 2;
+    $scope.limitToShow = limitStep;
+   
+
+    $scope.incrementLimit = function(){$scope.limitToShow+=limitStep;}
+    $scope.decrementLimit = function(){
+        $scope.limitToShow-=limitStep; 
+        if ($scope.limitToShow <= 2) {$scope.limitToShow = 2;}
+    }
 
     $scope.showResource = function(name, category){
         $scope.resourceContent = name;
+        console.log($scope.resourceContent);
         $scope.categotyContent = category;
-        $scope.limitToShow = 10;
+        $scope.limitToShow = 5;
     }
-
-
 
     $scope.categories = [];
     $scope.makeCatArr = function(){
@@ -55,12 +62,16 @@ function appController($scope, newsResources, $state) {
         console.log('changed');
     }, true);
 
-
+    $scope.storageSave = localStorageService.save;
 }
 
-function newsController($scope, $state, objectFactory, newsResources){
-    console.log(newsResources);
+// change getting articles
+function newsController($scope, $state, newsResources){
     $scope.allArticles = newsResources;
+}
+
+function savedController($scope, $state, localStorageService, savedArticles){
+   $scope.savedForLater = savedArticles;
 }
 
 
@@ -94,7 +105,9 @@ newsApp.config(function($stateProvider, $urlRouterProvider, $urlMatcherFactoryPr
         })
         .state("app.saved", {
             url: "/saved",
-            templateUrl: "templates/saved.html"
+            templateUrl: "templates/saved.html",
+            controller: "SavedCtrl",
+            resolve: {savedArticles: function(localStorageService){return localStorageService.get('savedArt');}}
         })
         .state("app.add-news",{
         	url: "/addnews",
@@ -178,6 +191,26 @@ newsApp.factory('dataService', function (myService) {
             formData = {};
         }
     };
+});
+
+// localStorage service
+newsApp.factory('localStorageService', function(){
+    return {
+        save: function(key, data){
+            var localObj = angular.fromJson(localStorage.getItem(key));
+            if(!localObj){
+                localObj = [];
+            }
+            console.log(localObj);
+            // return localObj;
+            localObj.push(data);
+            localStorage.setItem(key, angular.toJson(localObj));
+        },
+        get: function(key){
+            var localObj = angular.fromJson(localStorage.getItem(key));
+            return localObj;
+        }
+    }
 });
 
     
