@@ -72,7 +72,6 @@ aside label>input {margin: 0 10px;}
 aside label {
 	display: block;
 	margin: 10px 0;
-
 }
 
 .container h2 {
@@ -95,6 +94,7 @@ aside label {
 .article {
 	font-weight: bold;
 	margin: 1%;
+	overflow: hidden;
 }
 
 .article img, .article p {float: left;}
@@ -140,5 +140,4 @@ aside label {
 	margin: 0 auto;
 	margin-top: 10%;
 	width: 10%;
-
 }

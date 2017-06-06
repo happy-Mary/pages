@@ -7,9 +7,9 @@
 	<section ng-repeat="category in categories" ng-show="categotyContent == category || categotyContent == 'all'">
 		<h2>{{category}}</h2>
 		<div ng-repeat="source in newsRes" ng-if="source.category == category" ng-show="resourceContent == source.name || resourceContent == 'all'">
-			<!-- <h4 style="color: red; background-color: lightyellow">{{source.name}}</h4> -->
-			<div ng-repeat="allArt in allArticles" ng-if="allArt.source == source.id" style="overflow: hidden;">
-				<div class="article" ng-repeat="art in allArt.articles | limitTo: limitToShow"  style="overflow: hidden;"> 
+			<!-- <h4>{{source.name}}</h4> -->
+			<div ng-repeat="allArt in allArticles" ng-if="allArt.source == source.id">
+				<div class="article" ng-repeat="art in allArt.articles | limitTo: limitToShow"> 
 					<img src="{{art.urlToImage}}" alt="Do you have a photo?">
 					<p>{{art.title}}</p><br/>
 					<p><a ng-click="readMore(art)">Read more...</a></p>
